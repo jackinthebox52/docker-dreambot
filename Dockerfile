@@ -3,7 +3,8 @@ FROM ubuntu:latest
 LABEL Jack Massey<jackmassey2000@gmail.com>
 
 ENV HOME /root
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND noninteractive
+ENV JAVA openjdk-8-jdk
 
 RUN apt-get update \
 	&& apt-get install -y supervisor \
@@ -11,9 +12,10 @@ RUN apt-get update \
 		openbox \
 		x11vnc xvfb \
 		pwgen \
+        $JAVA \
 	&& apt-get autoclean \
 	&& apt-get autoremove \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists
 
 WORKDIR /root
 
