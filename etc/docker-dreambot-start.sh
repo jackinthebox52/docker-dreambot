@@ -13,8 +13,12 @@ if [ -n "$RESOLUTION" ]; then
     sed -i "s/1024x768/$RESOLUTION/" /etc/supervisord.conf
 fi
 
+
 # start up supervisord, all daemons should launched by supervisord.
 /usr/bin/supervisord -c /etc/supervisord.conf
+
+curl https://dreambot.org/DBLauncher.jar -o /root/DBLauncher.jar
+java -jar /root/DBLauncher.jar 
 
 # start a shell
 /bin/bash
