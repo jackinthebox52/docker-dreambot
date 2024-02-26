@@ -7,7 +7,8 @@ ARG DEBIAN_FRONTEND noninteractive
 ENV JAVA openjdk-8-jdk
 
 RUN apt-get update \
-	&& apt-get install -y supervisor \
+	&& apt-get install -y --no-install-recommends \
+        supervisor \
 		openssh-server nano \
 		openbox \
 		x11vnc xvfb \
