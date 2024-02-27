@@ -10,15 +10,13 @@ echo "root:$SSHPW" | chpasswd
 echo "ssh login password: $SSHPW"
 
 if [ -n "$RESOLUTION" ]; then
-    sed -i "s/1024x768/$RESOLUTION/" /etc/supervisord.conf
+    sed -i "s/1024x768/$RESOLUTION/" /etc/docker-dreambot/supervisord.conf
 fi
 
 
-# start up supervisord, all daemons should launched by supervisord.
-/usr/bin/supervisord -c /etc/supervisord.conf
+#Start all of our stuff
+/usr/bin/supervisord -c /etc/docker-dreambot/supervisord.conf
 
-curl https://dreambot.org/DBLauncher.jar -o /root/DBLauncher.jar
-java -jar /root/DBLauncher.jar 
+./etc/docker-dreambot/launch-dreambot.sh
 
-# start a shell
 /bin/bash

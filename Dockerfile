@@ -1,13 +1,13 @@
 FROM ubuntu:latest
 
-LABEL Jack Massey<jackmassey2000@gmail.com>
+LABEL maintainer="Jack Massey<jackmassey2000@gmail.com>"
 
 ENV HOME /root
 ARG DEBIAN_FRONTEND noninteractive
 ENV JAVA openjdk-8-jdk
 
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
+	&& apt-get install -y \
         supervisor \
 		openssh-server nano \
 		openbox \
@@ -20,9 +20,9 @@ RUN apt-get update \
 
 WORKDIR /root
 
-ADD etc /etc
+ADD etc /etc/docker-dreambot
 
 EXPOSE 5900
 EXPOSE 22
 
-ENTRYPOINT ["/etc/docker-dreambot-start.sh"]
+ENTRYPOINT ["/etc/docker-dreambot/entry.sh"]
