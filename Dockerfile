@@ -6,13 +6,18 @@ ENV HOME /root
 ARG DEBIAN_FRONTEND noninteractive
 ENV JAVA openjdk-8-jdk
 
+ENV TZ=America/Chicago
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
 RUN apt-get update \
 	&& apt-get install -y \
+        tzdata \
         supervisor \
 		openssh-server nano \
 		openbox \
 		x11vnc xvfb \
-        websockify \
+        websockify novnc\
 		pwgen \
         $JAVA \
 	&& apt-get autoclean \
