@@ -17,6 +17,4 @@ fi
 #Start all of our stuff
 /usr/bin/supervisord -c /etc/docker-dreambot/supervisord.conf
 
-./etc/docker-dreambot/launch-dreambot.sh
-
-/bin/bash
+/etc/docker-dreambot/launch-dreambot.sh
