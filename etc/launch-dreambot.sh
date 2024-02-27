@@ -1,7 +1,5 @@
 # Wait for the X server to be up and running
-while ! xset q &>/dev/null; do
-    sleep 1
-done
+sleep 5
 
 export DISPLAY=":1"
 wget https://dreambot.org/DBLauncher.jar -O /root/DBLauncher.jar

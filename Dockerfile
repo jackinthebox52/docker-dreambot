@@ -12,6 +12,7 @@ RUN apt-get update \
 		openssh-server nano \
 		openbox \
 		x11vnc xvfb \
+        websockify \
 		pwgen \
         $JAVA \
 	&& apt-get autoclean \
